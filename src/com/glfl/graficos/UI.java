@@ -18,8 +18,8 @@ public class UI {
 	
 	int fontSize = 8;
 	int fontYBorder = 1;
-	
-	
+
+
 
 	public void render(Graphics g) {
 		int maxLifeBarWidth = 50;
