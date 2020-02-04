@@ -1,9 +1,6 @@
 package com.glfl.main;
 
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 //import java.awt.Graphics2D;
@@ -133,6 +130,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		g.dispose();
 		g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, WIDTH * scale, HEIGHT * scale, null);
+		g.setFont(new Font("arial", Font.BOLD,17));
+		g.setColor(Color.white);
+		g.drawString("AMMO: " + player.ammo,620,15);
 		bs.show();
 	}
 

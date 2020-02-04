@@ -24,6 +24,8 @@ public class Player extends Entity {
 	private List<BufferedImage> rightPlayer;
 	private List<BufferedImage> leftPlayer;
 
+	public int ammo = 0;
+
 	public double maxLife = 100;
 	public double life;
 
@@ -73,9 +75,7 @@ public class Player extends Entity {
 					index = 0;
 				}
 			}
-
 		}
-		
 		checkItems();
 
 		Camera.x = Camera.clamp(this.getX() - (Game.WIDTH / 2), 0, (World.WIDTH * 16) - Game.WIDTH);
@@ -120,6 +120,11 @@ public class Player extends Entity {
 					return;
 				}
 			}
+			if(e instanceof BulletPack) {
+				if(ammoPackColidding(e)) {
+					return;
+				}
+			}
 		}
 	}
 	
@@ -130,6 +135,16 @@ public class Player extends Entity {
 			if(life >= maxLife) {
 				life = maxLife;
 			}
+			Game.entitiesToRemove.add(e);
+			return true;
+		}
+		return false;
+	}
+
+	private boolean ammoPackColidding(Entity e) {
+		if(Entity.isColidding(this, e)) {
+			BulletPack bp = (BulletPack) e;
+			ammo += bp.ammoQuantity;
 			Game.entitiesToRemove.add(e);
 			return true;
 		}
