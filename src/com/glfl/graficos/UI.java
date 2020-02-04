@@ -35,18 +35,5 @@ public class UI {
 		g.drawString((int)Game.player.life+" / "+(int)Game.player.maxLife,
 				(int)(x+fontYBorder), y+uiHeight-fontYBorder);
 	}
-	
-	private void renderLifeBar(Graphics g) {
-		int lifeBarWidth = (int)((Game.player.life/Game.player.maxLife) * uiWidth);
-		g.setColor(Color.black);
-		g.fillRect(x-xBorder, y-yBorder, uiWidth+ xBorder*2, uiHeight + yBorder*2);
-		g.setColor(Color.red);
-		g.fillRect(x, y, uiWidth, uiHeight);
-		g.setColor(Color.green);
-		g.fillRect(x, y, lifeBarWidth, uiHeight);
-		g.setColor(Color.gray);
-		g.setFont(new Font("arial",Font.BOLD,fontSize));
-		g.drawString((int)Game.player.life+" / "+(int)Game.player.maxLife,
-				(int)(x+fontYBorder), y+uiHeight-fontYBorder);
-	}
+
 }
